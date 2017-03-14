@@ -1,0 +1,10 @@
+package tw.leonchen.myproject;
+
+public class TestMyApp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
