@@ -1,0 +1,10 @@
+
+public class FabAll {
+
+	public static void main(String[] args) {
+		long f=2;
+		
+
+	}
+
+}

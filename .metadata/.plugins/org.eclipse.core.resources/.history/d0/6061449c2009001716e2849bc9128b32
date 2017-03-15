@@ -1,0 +1,11 @@
+package tw.leonchen.type;
+
+public class TestPrimitiveEx2 {
+
+	public static void main(String[] args) {
+		int num = 6;
+		System.out.println("num=" + num);
+
+	}
+
+}

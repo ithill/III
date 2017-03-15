@@ -1,0 +1,23 @@
+
+public class FabPrint {
+
+	public static void main(String[] args) {
+		int index = 1;
+		long f = 2;
+		long f1 = 1;
+		long f2 = 1;
+		if(index == 1 ||index == 2){
+			return 1;
+			System.out.print(1);
+		}
+		for (index=3; iindex<=6; index++){
+			f=f1+f2;
+			f1=f2;
+			f2=f;
+		}
+		return f;
+		System.out.print("f" + f );
+	}
+	
+
+}

@@ -1,0 +1,10 @@
+
+public class TestOperator {
+
+	public static void main(String[] args) {
+		int i = 75;
+		System.out.println(i>80 || i<75);
+
+	}
+
+}
