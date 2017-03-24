@@ -1,0 +1,41 @@
+class BirthDate{
+	private int day;
+	private int month;
+	private int year;
+	
+	BirthDate(int day,int month,int year){
+		this.day = day;
+		this.month = month;
+		this.year = year;
+		
+	}
+	public void setDay(int d){	
+		day = d;
+	}
+	public void setMonth(int m){
+		month = m;
+	}
+	public void setYear(int y){
+		year = y;
+	}
+	public int getDay(int d){
+		return d;
+	}
+	public int getMonth(int m){
+		return m;
+	}
+	public int getYear(int y){
+		return y;
+	}
+	public void print(){
+		System.out.println(day + "-" + month + "-" +year );
+	}
+}
+public class TestBirthDate {
+
+	public static void main(String[] args) {
+		BirthDate d1 = new BirthDate(1,1,2011);
+		BirthDate d2 = new BirthDate(2,2,2022);
+	}
+
+}

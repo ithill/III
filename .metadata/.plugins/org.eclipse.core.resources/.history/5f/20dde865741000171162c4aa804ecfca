@@ -1,0 +1,45 @@
+package tw.ithill.practice;
+
+class Personal{
+	private String name;
+	private String location;
+	
+	Personal(String name){
+		this.name = name;
+		location = "Taipei";
+	}
+	
+	Personal(String name,String location){
+		this.name = name;
+		this.location = location;
+	}
+	
+	public String info(){
+		return "name" + name + "location" +location;
+	}
+}
+
+class Student extends Personal{
+	private String school;
+	
+	Student(String name,String school){
+		this(name,"Taipei",school);
+	}
+	
+	Student(String n,String l,String school){
+		super(n,"1");
+		this.school = school;
+	}
+	
+	public String info(){
+		return super.info() + "school:" + school;
+	}
+}
+
+public class TestStudent {
+
+	public static void main(String[] args) {
+
+	}
+
+}

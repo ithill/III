@@ -1,0 +1,18 @@
+package tw.ithill.practice;
+
+class SuperClass{
+	private int n;
+	
+	SuperClass(){
+		System.out.println("SuperClass()");
+	}
+	
+}
+
+public class TestSuperSub {
+
+	public static void main(String[] args) {
+
+	}
+
+}

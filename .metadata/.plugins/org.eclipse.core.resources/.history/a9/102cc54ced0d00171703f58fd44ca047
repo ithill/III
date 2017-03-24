@@ -1,0 +1,24 @@
+package tw.leonchen.my.project.oop;
+
+public class TestConstructor {
+	/*TestConstructor(){
+		System.out.println("execute here");
+	}
+	*/
+	TestConstructor(int number){
+		System.out.println("execute here" + number);
+	
+	
+	public static void main(String[] args) {
+		/*TestConstructor t = new TestConstructor();
+		t.Constructor();
+		System.out.println("Understand?");
+	}*/
+		TestConstructor t = new TestConstructor(6);
+		new TestConstuctor(6).Constructor;
+		System.out.println("Understand?");
+		
+	void Constructor(){
+		System.out.println("print here");
+	}
+}

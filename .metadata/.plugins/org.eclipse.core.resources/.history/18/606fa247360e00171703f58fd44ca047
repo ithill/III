@@ -1,0 +1,23 @@
+
+public class FabFromZero {
+
+	public static void main(String[] args) {
+		int index=10;
+		for(int i=0;i<=index; i++){
+		System.out.print(f(i)+" ");
+		}
+	}
+	public static long f(int index){
+		
+		long f=1;
+		long f1=0;
+		long f2=1;
+		for(int i=0; i<=index; i++){
+				f=f1+f2;
+				f1=f2;
+				f2=f;
+		}
+		return f;
+	}
+
+}
