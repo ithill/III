@@ -42,7 +42,7 @@ public class TestStudent {
 		Person p1 = new Person("A");
 		Person p2 = new Person("B","Tokyo");
 		
-		Student s1 = new Student("C","l1");
+		Student s1 = new Student
 		
 	}
 

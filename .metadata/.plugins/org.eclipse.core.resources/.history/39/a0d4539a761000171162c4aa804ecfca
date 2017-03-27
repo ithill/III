@@ -40,9 +40,7 @@ public class TestStudent {
 
 	public static void main(String[] args) {
 		Person p1 = new Person("A");
-		Person p2 = new Person("B","Tokyo");
-		
-		Student s1 = new Student("C","l1");
+		Person p2 = new Person("B","tokyo");
 		
 	}
 
