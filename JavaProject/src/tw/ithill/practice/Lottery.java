@@ -3,7 +3,7 @@ package tw.ithill.practice;
 public class Lottery {
 	int[][] arr = new int[42][2];
 
-	public void assignvalue(){
+	public void assignValue(){
 		int number = 0;
 		
 		for(int i=0; i<arr.length; i++){
@@ -21,11 +21,14 @@ public class Lottery {
 		for(int i=0; i<arr.length-1; i++){
 			for(int j=i+1; j<arr.length; j++){
 				if(arr[i][1]<arr[j][1]){
-				temp = arr[i][0];
+					//temp = arr[i][0];
+				temp = arr[j][0];
 				temp1 = arr[j][1];
-				arr[i][0] = arr[j][0];
+				//arr[i][0] = arr[j][0];
+				arr[j][0] = arr[i][0];
 				arr[j][1] = arr[i][1];
-				arr[j][0]= temp;
+				//arr[j][0]= temp;
+				arr[i][0]= temp;
 				arr[i][1]= temp1;
 				}
 			}
@@ -43,7 +46,7 @@ public class Lottery {
 	}
 	public static void main(String[] args) {
 		Lottery l = new Lottery();
-		l.assignvalue();
+		l.assignValue();
 		l.sort();
 		l.print();
 	}
