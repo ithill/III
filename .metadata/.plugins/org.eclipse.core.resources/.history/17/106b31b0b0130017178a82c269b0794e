@@ -1,8 +1,8 @@
 package tw.leonchen.my.project.Exception;
 
 abstract class Company{
-	public abstract void calFuel();
-	public abstract void calDistance();
+	abstract public void calFuel();
+	abstract public void calDistance();
 }
 
 class Truck extends Company{
