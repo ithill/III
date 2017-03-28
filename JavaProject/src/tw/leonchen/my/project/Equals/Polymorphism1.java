@@ -17,9 +17,9 @@ public class Polymorphism1 {
 	public static void main(String[] args) {
 		
 		Polymorphism1 p = new Polymorphism1(); 	
-		//p.play(new Cat());
-		//p.play(new Dog());
-		c1.play();
+		p.play(new Cat());
+		p.play(new Dog());
+		//c1.play();
 		
 	}
 	

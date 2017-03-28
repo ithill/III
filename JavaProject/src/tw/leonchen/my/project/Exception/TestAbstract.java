@@ -1,0 +1,43 @@
+package tw.leonchen.my.project.Exception;
+
+abstract class Company{
+	abstract public void calFuel();
+	abstract public void calDistance();
+}
+
+class Truck extends Company{
+	public void calFuel(){
+		System.out.println("Fuel");
+	}
+	public void calDistance(){
+		System.out.println("Distance");	
+	}
+	
+	
+}
+
+class Ship extends Company{
+	public void calFuel(){
+		System.out.println("ship's Fuel");
+	}
+	public void calDistance(){
+		System.out.println("ship's Distance");	
+	}
+	
+}
+public class TestAbstract {
+	public void work(Company c){
+		c.calFuel();
+		c.calDistance();
+	}
+	public static void main(String[] args) {
+//		Truck tab = new Truck();
+//		tab.calFuel();
+//		tab.calDistance();
+		
+		TestAbstract test = new TestAbstract();
+		test.work(new Truck());
+		test.work(new Ship());
+		
+	}
+}
