@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="tw.leonchen.my.project.Exception.A.B"/>
+<fullyQualifiedTypeName name="tw.leonchen.my.project.Exception.C"/>
+<fullyQualifiedTypeName name="tw.leonchen.my.project.Exception.C.D"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
+<fullyQualifiedTypeName name="tw.leonchen.myproject.collection.TestProperty"/>
 </qualifiedTypeNameHistroy>
