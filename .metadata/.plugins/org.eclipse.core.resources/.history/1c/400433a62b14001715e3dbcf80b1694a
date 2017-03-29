@@ -1,0 +1,27 @@
+package tw.leonchen.my.project.Exception;
+
+import tw.leonchen.my.project.Exception.C.D;
+
+class C{
+	private static String age = "18";
+	
+	static class D{
+		public void yourAge(){
+			System.out.println("age=" + age);
+		} 
+	 public static void play(){
+		 System.out.println("play game");
+	 }
+	
+	}	
+}
+
+public class TestStaticNestedClass {
+
+	public static void main(String[] args) {
+		C.D d1 = new C.D();
+		d1.yourAge();
+		d1.play();
+	}
+
+}

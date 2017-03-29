@@ -19,7 +19,7 @@ public class Polymorphism1 {
 		Polymorphism1 p = new Polymorphism1(); 	
 		p.play(new Cat());
 		p.play(new Dog());
-		//c1.play();
+	
 		
 	}
 	
