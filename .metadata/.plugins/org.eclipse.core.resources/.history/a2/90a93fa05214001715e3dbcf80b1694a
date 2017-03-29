@@ -1,0 +1,15 @@
+package tw.leonchen.myproject.collection;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Set;
+
+public class HashMap {
+	TestHashMap map =new TestHashMap();
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
