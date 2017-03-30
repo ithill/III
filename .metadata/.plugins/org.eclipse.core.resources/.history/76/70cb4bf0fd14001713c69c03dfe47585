@@ -1,0 +1,16 @@
+package tw.leonchen.myproject.io;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class TestFileReader {
+
+	public static void main(String[] args) throws IOException  {
+		FileReader fr1 = new FileReader("c:/temp/hello.txt");
+		FileWriter fw1 = new FileWriter("c:/temp/hello789.txt");
+		
+	}
+
+}

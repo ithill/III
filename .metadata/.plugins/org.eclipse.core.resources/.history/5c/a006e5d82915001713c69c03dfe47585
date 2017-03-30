@@ -1,0 +1,12 @@
+package tw.ithill.practice;
+
+public class NewGeneration 
+{
+public static void main(String args[])
+{ 
+int values[]=new int[5];
+System.out.println(values [1]);
+}
+}
+
+

@@ -1,0 +1,22 @@
+package tw.leonchen.myproject.io;
+
+class MazeGame{
+	private int x,y;
+	
+	public void move(int x,int y){
+		synchronized(this){
+			this.x = x;
+			this.y = y;
+			this.notify();
+			System.out.print("x=" + x +"y=" + y);
+		}
+	}
+}
+
+public class TestSyncronized {
+
+	public static void main(String[] args) {
+
+	}
+
+}

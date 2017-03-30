@@ -1,0 +1,26 @@
+package tw.leonchen.myproject.io;
+
+class ThreadEx implements Runnable{
+	
+	public void run(){
+		for(int i=0; i<10; i++){
+			System.out.println(Thread.currentThread().getName() + "i=" + i);
+		}
+	}
+}
+
+public class CallThread {
+
+	public static void main(String[] args) {
+		ThreadEx trd = new ThreadEx();
+		
+		Thread thread1 = new Thread(trd);
+		Thread thread2 = new Thread(trd);
+		
+		thread1.start();
+		thread2.start();
+		
+		System.out.println("finished");
+	}
+
+}

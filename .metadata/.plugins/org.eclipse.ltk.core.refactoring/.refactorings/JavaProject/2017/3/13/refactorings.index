@@ -9,3 +9,7 @@
 1490751210431	Move compilation unit
 1490765912499	Rename package 'tw.leonchen.my.project.Exception'
 1490773076678	Rename type 'HashMap'
+1490843606914	Rename type 'FileReader'
+1490846911745	Copy compilation unit
+1490847119855	Rename type 'TestFileReaderButter'
+1490855215567	Rename compilation unit 'CallTread.java'

@@ -1,0 +1,10 @@
+package tw.leonchen.myproject.io;
+
+public class FileReader {
+
+	public static void main(String[] args)  {
+		FileReader fr1 = new FileReader("c:/temp/hello.txt");
+		
+	}
+
+}

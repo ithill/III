@@ -1,0 +1,40 @@
+package tw.leonchen.myproject.io;
+
+class MazeGame{
+	private int x,y;
+	
+	public void move(int x,int y){
+		synchronized(this){
+			this.x = x;
+			this.y = y;
+			this.notify();
+			System.out.print("x=" + x +"y=" + y);
+		}
+	}
+	
+	public void checkExit(){
+		synchronized(this){
+			try{
+				this.wait();
+				if(x==0 && y==0){
+					System.out.println("fine");
+					System.exit(-1);
+				}
+			}catch(InterruptedException e){
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+class Hero implements Runnable{
+	
+}
+
+public class TestSyncronized {
+
+	public static void main(String[] args) {
+
+	}
+
+}

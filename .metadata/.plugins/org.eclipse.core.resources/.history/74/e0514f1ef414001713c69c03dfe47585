@@ -1,0 +1,10 @@
+package tw.leonchen.myproject.io;
+
+public class TestFileInput2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
