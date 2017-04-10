@@ -11,3 +11,19 @@ select e.DEPARTMENT_ID,sum(e.SALARY) "薪水總和"
 from employees e join departments d
 on e.DEPARTMENT_ID = d.DEPARTMENT_ID
 group by e.DEPARTMENT_ID;
+
+
+
+以下在extra-ch4-合併補充練習EEIT95
+-----------------------------------------------------
+select s.name,c.id,c.name,c.score
+from student s join course c
+on s.id = c.id
+order by s.id;
+
+-----------------------------------------------
+select s.id,s.name,sum(score) "總分"
+from student s left outer join course c 
+on s.id = c.id
+group by s.id,s.name
+order by sum(score) desc;

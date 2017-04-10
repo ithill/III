@@ -1,0 +1,31 @@
+select * from employees cross join departments;
+
+select employee_id,last_name,location_id,employees.department_id from employees join departments
+on employees.DEPARTMENT_ID = departments.DEPARTMENT_ID;
+
+select last_name,employees.DEPARTMENT_ID,departments.DEPARTMENT_ID,department_name
+from employees cross join departments;
+
+select e.EMPLOYEE_ID,e.LAST_NAME,d.DEPARTMENT_ID,d.DEPARTMENT_NAME
+from employees e join departments d
+on e.DEPARTMENT_ID = d.DEPARTMENT_ID
+order by department_id desc;
+
+select e.EMPLOYEE_ID,e.SALARY,j.grade_level,j.LOWEST_SAL,j.HIGHEST_SAL
+from employees e join JOB_GRADES j
+on e.SALARY >= j.LOWEST_SAL  and
+   e.SALARY <= j.HIGHEST_SAL;
+
+select e.EMPLOYEE_ID,e.SALARY,j.grade_level,j.LOWEST_SAL,j.HIGHEST_SAL
+from employees e join JOB_GRADES j
+on e.SALARY between j.LOWEST_SAL and j.HIGHEST_SAL
+
+select w.EMPLOYEE_ID,w.LAST_NAME,w.MANAGER_ID,m.EMPLOYEE_ID,m.LAST_NAME,m.MANAGER_ID
+from employees w join employees m
+on w.MANAGER_ID = m.EMPLOYEE_ID;
+
+select e.DEPARTMENT_ID,sum(e.SALARY) "Á~¤ôÁ`©M"
+from employees e join departments d
+on e.DEPARTMENT_ID = d.DEPARTMENT_ID
+group by e.DEPARTMENT_ID;
+
