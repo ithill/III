@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;tw.ithill.practice.Iterator&apos; to &apos;TestIterator&apos;&#x0D;&#x0A;- Original project: &apos;JavaProject&apos;&#x0D;&#x0A;- Original element: &apos;tw.ithill.practice.Iterator&apos;&#x0D;&#x0A;- Renamed element: &apos;tw.ithill.practice.TestIterator&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Iterator&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;tw.ithill.practice{Iterator.java[Iterator" matchStrategy="1" name="TestIterator" qualified="false" references="true" similarDeclarations="false" stamp="1491554703301" textual="false" version="1.0"/>
+</session>
