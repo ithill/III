@@ -2,4 +2,12 @@ ch4 稪羆ㄧ计-->だ舱┪舱-->琩ㄌ场絪腹だ舱,场羱羆
 
 ch5 ㄖ琩高-->琩﹎∠羱∠场嘿
 
+
+
+
 侯絤策-->琩ㄌ场嘿だ舱∠场羱羆
+
+select e.DEPARTMENT_ID,sum(e.SALARY) "羱羆㎝"
+from employees e join departments d
+on e.DEPARTMENT_ID = d.DEPARTMENT_ID
+group by e.DEPARTMENT_ID;
