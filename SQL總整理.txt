@@ -1,0 +1,191 @@
+@計算年薪(可擅用括號)
+select last_name,salary,salary*12 "年薪"
+from employees;
+
+@null為數學運算結果仍為null
+select last_name,salary,commission_pct,salary*12+commission_pct "年終"
+from employees;
+
+@使用isnull(欄位,指定值)將null代換為指定值
+select last_name,commission_pct,isnull(commission_pct,0.00) "代換後"
+from employees;
+
+@從上表過濾出津貼非null之員工且升序
+select last_name,commission_pct
+from employees
+where commission_pct is not null
+order by commission_pct;
+
+@消除重覆列
+select last_name,department_id
+from employees;
+
+select distinct department_id
+from employees;
+
+@P44+45未練習
+
+@基本條件查詢-->select+from+where-->文字與日期需+''
+select last_name,department_id,hire_date
+from employees;
+
+部門編號為90的員工及其資訊
+select employee_id,last_name,job_id,department_id
+from employees
+where department_id = 90;
+
+姓氏為whalen的員工及其資訊
+select employee_id,last_name,job_id,department_id
+from employees
+where last_name ='whalen';
+
+到職日為1994-06-07的員工
+select employee_id,job_id,last_name,hire_date
+from employees
+where hire_date ='1994-06-07';
+
+@比較運算子:
+between--and先寫小再寫大!
+
+薪水介於2500~3500的員工
+select last_name,salary
+from employees
+where salary between 2500 and 3500
+order by salary;
+
+
+like(not like)-->%表0個或多個字元-->'s%'!
+
+名字開頭為S的員工
+select first_name
+from employees
+where first_name like's%';
+
+名字中有S的員工
+select first_name
+from employees
+where first_name like'%s';
+
+in(not in):條件完全符合清單的值
+
+找出主管編號為101,102,103的員工
+select last_name,manager_id
+from employees
+where manager_id in (101,102,103);
+
+找出主管編號非101,102,103的員工
+select last_name,manager_id
+from employees
+where manager_id not in (101,102,103);
+
+isnull(is not null)
+
+找出無主管編號的員工以及有主管編號的員工
+select employee_id,last_name,manager_id
+from employees
+where manager_id is null;
+
+select employee_id,last_name,manager_id
+from employees
+where manager_id is  not null;
+
+@排序:asc(default)/desc-->記得加在最後 且 會先顯示null
+
+多欄位排序
+select last_name,department_id,salary
+from employees
+order by department_id,salary desc;
+
+注意!!上面desc是指若編號相同,再依薪水遞減排序
+
+@MSSQL獨有的排行榜查詢
+
+top(n):查詢前/後幾名
+select top(2)salary,employee_id,last_name
+from employees
+order by salary desc;
+
+top(n) with ties:同名次亦列入(增額錄取)
+select top(2) with ties salary,employee_id,last_name
+from employees
+order by salary desc;
+
+@彙總函數:avg()/sum()/max()/min()/count()等等
+注意！！所有資料當作一個彙總輸出時-->不可有個別欄位！！-->就是想秀薪水個別欄位再配上部門平均薪啊！
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　怎辦？
+　　　　　　　　　　　　　　　　　　　　　　　　　　   -->group by
+錯誤示範：
+ex1
+select last_name,avg(salary)
+from employees;
+-->select avg(salary)"平均薪水" from employees;
+
+補：
+select last_name,upper(last_name) from employees;
+
+彙總後的資料分成一組-->avg()/sum()/max()/min()算出部門的平均薪水＋總薪水＋最高薪+最低薪
+select avg(salary)"平均薪",sum(salary)"總薪水",max(salary)"最高",min(salary)"最低"
+from employees;
+
+count():計算總共幾筆資料
+select count(*),count(commission_pct),count(salary)
+from employees;
+
+avg():計算總平均時會自動略去null值,所以需將null值轉成０-->isnull(欄位,0)
+select avg(commission_pct)"有空值",avg(isnull(commission_pct,0))"轉成零"
+from employees;
+
+彙總多筆資料-->分成多組-->group by
+select department_id,employee_id from employees;
+計算各部門的平均薪＋總合薪：
+select department_id,avg(salary)"部門平均薪",sum(salary)"部門總薪"
+from employees
+group by department_id;
+
+多欄位分群
+先依部門分群,若部門相同再依job_id分群,計算總薪水且薪水依同部門降序
+select department_id,job_id,sum(salary)"總薪"
+from employees
+group by department_id,job_id
+order by department_id,sum(salary) desc;
+
+過濾分群資料
+上方是完全沒過濾的分群資料,現在想從這些資料中選取平均薪大於8000的部門
+select department_id,avg(salary)"平均薪"
+from employees
+group by department_id
+having avg(salary)>8000
+order by avg(salary) desc;
+
+選取最高薪大於10000的部門
+select department_id,max(salary)"部門最高新"
+from employees
+group by department_id
+having max(salary)>10000
+order by max(salary) desc;
+
+選取總分在247以上的學員
+select id,sum(score)"總分",count(*)"考幾科"
+from course
+group by id
+having sum(score)>=247
+order by sum(score) desc;
+
+@合併查詢(join)
+
+1.cross join-->共同欄位須都打出來, 並以表格名．欄位名加以區分
+select last_name, employees.department_id,departments.department_id,department_name
+from employees cross join departments
+
+
+
+2.(inner) join:
+兩邊表格有共同欄位-->on＋指定合併的欄位名稱
+
+找出主管編號為149的員工
+select e.employee_id,e.last_name,d.department_name,d.department_id,d.location_id
+from employees e join departments d
+on e.department_id = d.department_id
+where e.manager_id =149;
+
+
