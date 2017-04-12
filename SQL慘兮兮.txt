@@ -1,0 +1,396 @@
+@計算年薪(可擅用括號)
+select last_name,salary,salary*12 "年薪"
+from employees;
+
+@null為數學運算結果仍為null
+select last_name,salary,commission_pct,salary*12+commission_pct "年終"
+from employees;
+
+@使用isnull(欄位,指定值)將null代換為指定值
+select last_name,commission_pct,isnull(commission_pct,0.00) "代換後"
+from employees;
+
+@從上表過濾出津貼非null之員工且升序
+select last_name,commission_pct
+from employees
+where commission_pct is not null
+order by commission_pct;
+
+@消除重覆列
+select last_name,department_id
+from employees;
+
+select distinct department_id
+from employees;
+
+@P44+45未練習
+
+@基本條件查詢-->select+from+where-->文字與日期需+''
+select last_name,department_id,hire_date
+from employees;
+
+部門編號為90的員工及其資訊
+select employee_id,last_name,job_id,department_id
+from employees
+where department_id = 90;
+
+姓氏為whalen的員工及其資訊
+select employee_id,last_name,job_id,department_id
+from employees
+where last_name ='whalen';
+
+到職日為1994-06-07的員工
+select employee_id,job_id,last_name,hire_date
+from employees
+where hire_date ='1994-06-07';
+
+@比較運算子:
+between--and先寫小再寫大!
+
+薪水介於2500~3500的員工
+select last_name,salary
+from employees
+where salary between 2500 and 3500
+order by salary;
+
+
+like(not like)-->%表0個或多個字元-->'s%'!
+
+名字開頭為S的員工
+select first_name
+from employees
+where first_name like's%';
+
+名字中有S的員工
+select first_name
+from employees
+where first_name like'%s';
+
+in(not in):條件完全符合清單的值
+
+找出主管編號為101,102,103的員工
+select last_name,manager_id
+from employees
+where manager_id in (101,102,103);
+
+找出主管編號非101,102,103的員工
+select last_name,manager_id
+from employees
+where manager_id not in (101,102,103);
+
+isnull(is not null)
+
+找出無主管編號的員工以及有主管編號的員工
+select employee_id,last_name,manager_id
+from employees
+where manager_id is null;
+
+select employee_id,last_name,manager_id
+from employees
+where manager_id is  not null;
+
+@排序:asc(default)/desc-->記得加在最後 且 會先顯示null
+
+多欄位排序
+select last_name,department_id,salary
+from employees
+order by department_id,salary desc;
+
+注意!!上面desc是指若編號相同,再依薪水遞減排序
+
+@MSSQL獨有的排行榜查詢
+
+top(n):查詢前/後幾名
+select top(2)salary,employee_id,last_name
+from employees
+order by salary desc;
+
+top(n) with ties:同名次亦列入(增額錄取)
+select top(2) with ties salary,employee_id,last_name
+from employees
+order by salary desc;
+
+@彙總函數:avg()/sum()/max()/min()/count()等等
+注意！！所有資料當作一個彙總輸出時-->不可有個別欄位！！-->就是想秀薪水個別欄位再配上部門平均薪啊！
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　怎辦？
+　　　　　　　　　　　　　　　　　　　　　　　　　　   -->group by
+錯誤示範：
+ex1
+select last_name,avg(salary)
+from employees;
+-->select avg(salary)"平均薪水" from employees;
+
+補：
+select last_name,upper(last_name) from employees;
+
+彙總後的資料分成一組-->avg()/sum()/max()/min()算出部門的平均薪水＋總薪水＋最高薪+最低薪
+select avg(salary)"平均薪",sum(salary)"總薪水",max(salary)"最高",min(salary)"最低"
+from employees;
+
+count():計算總共幾筆資料
+select count(*),count(commission_pct),count(salary)
+from employees;
+
+avg():計算總平均時會自動略去null值,所以需將null值轉成０-->isnull(欄位,0)
+select avg(commission_pct)"有空值",avg(isnull(commission_pct,0))"轉成零"
+from employees;
+
+彙總多筆資料-->分成多組-->group by
+select department_id,employee_id from employees;
+計算各部門的平均薪＋總合薪：
+select department_id,avg(salary)"部門平均薪",sum(salary)"部門總薪"
+from employees
+group by department_id;
+
+多欄位分群
+先依部門分群,若部門相同再依job_id分群,計算總薪水且薪水依同部門降序
+select department_id,job_id,sum(salary)"總薪"
+from employees
+group by department_id,job_id
+order by department_id,sum(salary) desc;
+
+過濾分群資料
+上方是完全沒過濾的分群資料,現在想從這些資料中選取平均薪大於8000的部門
+select department_id,avg(salary)"平均薪"
+from employees
+group by department_id
+having avg(salary)>8000
+order by avg(salary) desc;
+
+選取最高薪大於10000的部門
+select department_id,max(salary)"部門最高新"
+from employees
+group by department_id
+having max(salary)>10000
+order by max(salary) desc;
+
+選取總分在247以上的學員
+select id,sum(score)"總分",count(*)"考幾科"
+from course
+group by id
+having sum(score)>=247
+order by sum(score) desc;
+
+@合併查詢(join)
+
+1.cross join-->共同欄位須都打出來, 並以表格名．欄位名加以區分
+select last_name, employees.department_id,departments.department_id,department_name
+from employees cross join departments
+
+
+
+2.(inner) join:
+兩邊表格有共同欄位-->on＋指定合併的欄位名稱
+
+找出主管編號為149的員工
+select e.employee_id,e.last_name,d.department_name,d.department_id,d.location_id
+from employees e join departments d
+on e.department_id = d.department_id
+where e.manager_id =149;
+
+列出學員及各科成績(注意!10號少考一科,且23號全科缺考)
+select s.id,c.name,c.score
+from student s join course c
+on s.id = c.id 
+order by s.id;
+
+3.non-equaijoin:不相等的join(> or <)-->所以on是接>=或<=,因為不會是=
+可用在查詢薪水級距/分數級距/檢驗數據-->會有另一個xx級距表
+
+select * from job_grades
+
+查詢員工薪資及薪水級距
+select e.last_name,e.salary,j.grade_level,j.lowest_sal,j.highest_sal
+from employees e join job_grades j
+on e.salary >= j.lowest_sal and 
+   e.salary <= j.highest_sal;
+
+select e.last_name,e.salary,j.grade_level,j.lowest_sal,j.highest_sal
+from employees e join job_grades j
+on e.salary between j.lowest_sal and j.highest_sal;
+
+4.outer join->會傳回含有null值的資料
+
+left outer join(左邊表中有null)
+select * from employees;
+select * from departments;
+
+找出員工編號及部門編號及其部門名,有null也要顯示
+select e.employee_id,e.last_name,e.department_id,d.department_name
+from employees e left outer join departments d
+on e.department_id = d.department_id;
+-->其實寫法跟join一模一樣,差別只在多加了left outer,為了要秀出有null值的員工
+   且部門編號與部門名是有關的,所以編號為null,對應到右邊的表格=部門名當然也是null
+
+right outer join(右邊表中有null)
+select e.employee_id,e.last_name,e.department_id,d.department_name,d.manager_id
+from employees e right outer join departments d
+on e.department_id = d.department_id;
+
+full outer join(兩邊表中有null)
+select e.employee_id,e.last_name,e.department_id,d.department_name
+from employees e full outer join departments d
+on e.department_id = d.department_id;
+
+列出未參加考試的學員
+select s.id,c.name,c.score
+from student s left outer join course c
+on s.id = c.id;
+
+;select * from student cross join (select distinct name from course)c1
+order by student.id(不懂)
+
+5.self join-->寫法也是join
+
+@子查詢:條件式(where)寫不下去時,用()將已知的條件寫入-->最常出現子查詢的地方
+
+1.單列子查詢-->馬上犯了"子查詢傳回多欄位的錯誤"
+誰的薪水比abel多?
+select last_name,salary
+from employees
+where salary > (select salary 
+                from employees 
+				where last_name = 'Abel');
+
+誰的薪水最低?
+一開始的想法是用min+group by
+select last_name,min(salary)"薪水"
+from employees
+group by last_name,salary
+having salary = min(salary);------------>根本跑不出答案
+
+還是得用子查詢
+select employee_id,last_name
+from employees
+where salary =(select min(salary) from employees);
+
+老師講了一個關鍵字-->該:用group by
+
+查詢各部門最低薪且大於50號部門的最低薪為哪些部門？
+select department_id,min(salary)"該部門最低薪"
+from employees
+group by department_id
+having min(salary) > (select min(salary) 
+                      from employees
+					  where department_id = 50);
+
+這邊狂錯！
+先查了各部門最低薪--->知道整公司最低薪部門為50號,是2500
+但設having時就卡住,連找50號部門中的最低薪都卡
+
+＃單列子查詢最常見的錯誤為[傳回多筆資料],例如傳回一整欄的各部門最低薪,這樣絕對不止一筆資料
+我已經犯了很多次這種錯
+
+2.多列子查詢：傳回多筆資料
+語法:條件句</=/>+in/any/some/all+()
+
+找出薪水小於IT部門的員工
+select employee_id,last_name,salary
+from employees
+where salary < any (select salary
+                    from employees 
+					where job_id ='it_prog');
+select salary
+from employees
+where job_id ='it_prog';
+
+select * from employees;
+
+上面這種寫法會將it部門的員工(3位,但最高薪9000因為條件設定<9000所以無他)也包進去
+所以勢必要再加條件！
+
+select employee_id,last_name,salary
+from employees
+where salary < any (select salary
+                    from employees 
+					where job_id ='it_prog')
+				and job_id<>'it_prog';---------->過濾it部門的人  <>為不等於
+
+＃<any 表小於最大值
+  >any 表大於最小值
+  =any 表 in-------->所以上面這題不能用=any,因為有三筆員工的薪水資料
+
+＃<all 表小於最小值
+  >all 表大於最大值
+
+找出薪水小於(IT部門最低薪)的員工  
+select employee_id,last_name,salary
+from employees
+where salary < all (select salary
+                    from employees 
+					where job_id ='it_prog')
+				and job_id<>'it_prog';
+
+找出非主管職的員工
+select last_name,manager_id
+from employees
+where manager_id is null;
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+@新增先跳過
+insert into departments values (71,'public',100,1700);
+
+select * from departments;
+
+@複製表格-->select into
+1.將查詢的資料複製到另一個臨時表(臨時表儲存在系統資料庫tempdb的暫存資料表)
+2.該臨時表前面+#(指設定為local-->沒懂)
+
+從employees中選取某三欄位且job_id中帶有"rep"加進自創的table
+select employee_id,last_name,salary
+into #temp_sales
+from employees
+where job_id like '%rep%';
+
+select * from #temp_sales;
+
+#僅複製表格結構,不含資料, 利用 1 = 2 的小技巧
+select * into student2
+from student
+where 1=2;
+
+select *from student2;
+
+insert into student2
+select * from student
+where id<=5;
+
+select * from student2
+
+-------------------------------
+select * into student3
+from student
+where 1=2;
+
+select * from student3;
+
+insert into student3
+select * from student;
+
+select * from student3;
+
+delete from student3
+where id<=6;
+(刪除１至６號同學)
+
+select * from student3;
+
+@修改
+update employees set department_id = 60
+where employee_id=178
+
+---------
+select last_name,employee_id,manager_id
+from employees;
+|
+select distinct manager_id from employees;
+|
+select last_name,employee_id,manager_id 
+from employees
+where employee_id in (select distinct manager_id from employees)
+|
+(select distinct manager_id from employees where manager_id is not null)
+|
+select last_name,employee_id,manager_id 
+from employees
+where employee_id  not in (select distinct manager_id from employees where manager_id is not null)
