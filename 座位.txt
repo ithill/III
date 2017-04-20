@@ -1,0 +1,47 @@
+package ithill.oop;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class TestInsert {
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		String url = "jdbc:sqlserver://192.168.40.128:1433;databasename=testInsert";
+		Connection conn = DriverManager.getConnection(url, "sa", "P@ssw0rd");
+
+		FileReader fr = new FileReader("C:\\temp\\seat.txt");
+		BufferedReader bf = new BufferedReader(fr);
+		String read;
+		
+		
+		while ((read = bf.readLine()) != null) {
+//			String[] sp = read.split(",");
+//			System.out.println(sp);
+			System.out.println(read);
+			String s = "insert into seat (name,seat)" + "values (?,?)";
+			PreparedStatement ps = conn.prepareStatement(s);
+			ps.setString(1, "test");//¶ë
+			ps.setString(2, read);
+			ps.setBinaryStream(3, x);
+			ps.executeUpdate();
+		}
+//		String[] test = new String[3];
+//		test[0] = "a";
+//		test[1] = "b";
+//		test[2] = "c";
+//		for(int i = 0; i < test.length; i++ ){
+//			String s = "insert into seat (name,seat)" + "values (?,?)";
+//			PreparedStatement ps = conn.prepareStatement(s);
+//			ps.setString(1, "test");//¶ë
+//			ps.setString(2, test[i]);
+//			ps.executeUpdate();
+//		}
+
+	}
+}
