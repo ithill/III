@@ -1,0 +1,10 @@
+猔種
+
+Τ┻钵盽class常璶糶try-catch
+
+ㄒ:
+
+1.java.sql碭常穦┻钵盽,┮–琿常璶糶try-catch
+
+2.java.io琌,┮┏砛摸-->FileOutputStream单单 ㄤいclose()
+  璶糶try-catch

@@ -1,0 +1,20 @@
+Class.forName("如下")
+
+MS-->com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+MY-->com.mysql.jdbc.Driver
+
+Oracle-->oracle.jdbc.OracleDriver
+
+IBM-->com.ibm.db2.jdbc.app.DB2Driver
+
+--------------------------------------------------------
+Connection conn = DriverManager.getConnection("URL字串,帳,密")
+
+URL字串如下：
+
+MS-->jdbc:sqlserver://localhost(依據ip會變動):1433;databasename=jdbc(看公司名稱)
+
+MY-->jdbc:mysql://localhost:3306/jdbc
+
+Oracle-->jdbc:oracle:thin:@localhost:1521:orcl
