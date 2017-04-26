@@ -1,0 +1,43 @@
+declare @x int = 0;
+
+while(@x<=10)
+	begin
+		set @x = @x+1;
+			if @x%2 = 0
+				print cast(@x as varchar(3))+'琌案计' --print cast(@x as char(3))+'琌案计'-->穦Τ(ぃ来)
+			else
+				print cast(@x as varchar(3))+'琌縩计'
+			--continue
+	end
+
+--------------------------------------------------
+DECLARE @i int     ---ρ畍
+SET @i=0
+
+WHILE (@i< 10)
+  BEGIN
+    SET @i = @i + 1
+      IF @i % 2 = 0
+         PRINT '案计'+cast(@i as varchar(2))
+      ELSE
+         CONTINUE   --眖繷磅︽
+  END
+---------------------------------------------------
+
+create proce loop99 @x int, @y int
+as
+declare @i int = 1;
+declare @j int = 1;
+
+while(@i<=@x)
+	begin		
+		while(@j<=@y)
+			begin					
+				print cast(@i as varchar(2))+'x'+cast(@j as varchar(2))+'='+cast(@i*@j as varchar(5))
+					set @j=@j+1
+				end
+		set @i=@i+1
+		set @j = 1;	
+    end
+
+exec loop99  3,3;

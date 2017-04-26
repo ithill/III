@@ -1,0 +1,20 @@
+package teacherMA;
+
+import java.sql.*;
+
+public class JDBC1 {
+
+	public static void main(String[] args) throws Exception {
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//		new com.microsoft.sqlserver.jdbc.SQLServerDriver();
+
+//after new an object of Driver,i must get a connection:		
+		Connection conn = DriverManager.getConnection("jdbc:sqlserver:localhost:1433;databasename=jdbc","sa","P@ssw0rd");
+
+//then getting connection,i should execute SQL statement;but before execute SQL statement,i must
+//new an object of Statement by using Connection 
+		Statement stmt = conn.createStatement();
+		stmt.executeQuery("select * from employee");//execute SQL statement
+
+//after executeQuery,it will return "ResultSet"
+		ResultSet rs = stmt.executeQuery("select * from employee");
