@@ -1,0 +1,11 @@
+﻿body {
+}
+ h2 {
+        color:blue;
+        text-decoration:underline;
+            }
+ h3 {
+         color: green;
+         font-size: 3em;
+         text-transform:uppercase;
+            }
