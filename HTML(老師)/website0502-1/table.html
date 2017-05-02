@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+<meta charset="utf-8"/>
+    <title>表格練習</title>
+    <style>
+        #table1 {
+            width: 400px;
+            border:3px solid 	#408080;
+            border-collapse:collapse;
+        }
+        td,th {
+            border: 1px solid #336666;
+        }
+        thead {
+            background-color:#4F9D9D;
+            border-bottom:4px double 	#707038;
+            text-transform:uppercase;
+        }
+        tbody {
+            background-color:#81C0C0;
+            text-align:center;
+        }
+        tbody tr:nth-child(2n+1) {
+            background-color:#ADADAD;
+            }
+            tbody tr:nth-child(2n) {
+                background-color:	#00CACA;
+            }
+            tbody tr:hover {
+                background-color:yellow;
+            }
+    </style>
+</head>
+<body>
+    <table id="table1">
+        <caption><h3>表格練習</h3></caption>
+        <thead>
+            <tr>
+                <th>a</th>
+                <th>b</th>
+                <th>c</th>
+                <th>d</th>
+            </tr>
+            <tr>
+                <th colspan="2">a</th>
+            
+                <th colspan="2">c</th>
+            
+            </tr>
+         </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td colspan="3" rowspan="2">2</td>
+            
+        </tr>
+        <tr>
+            <td>1</td>
+            
+            
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td rowspan="4">3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+       </tbody>
+    </table>
+    <hr />
+    <h3>div 裡的文字垂直對齊</h3>
+    <div style="width:200px;height:100px;border:1px solid red;line-height:100px;">高度固定</div>
+    <hr />
+    <div style="width:200px;border:1px solid green;padding-top:50px;padding-bottom:50px;">高度不固定</div>
+</body>
+</html>

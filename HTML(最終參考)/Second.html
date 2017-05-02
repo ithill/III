@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+    <head>
+        <meta charset="utf-8"/>
+        <title>清單項目</title>
+        <style>
+            .list1 {
+                list-style-type:lower-alpha;
+            }
+            .list2 {
+                list-style-type:lower-roman;
+            }
+            .list3 {
+                list-style-type:none; /*須先將預設的樣式取消*/
+                list-style-image:url(image/i1.png);
+            }
+            .in {
+                background-color:#33FFAA;
+                list-style-position:inside;
+            }
+            .out {
+                background-color:#D1BBFF;
+                list-style-position:outside;
+            }
+        </style>
+        <script>
+        </script>
+    </head>
+    <body>
+        <ul class="list1" style="background-color:gold;">
+            <li>項目
+                <ol>
+                    <li>要注意放結束的地方</li>
+                </ol></li>
+            <li>清單
+                <ul class="list2">
+                    <li style="background-color:gray;">
+                        第一層
+                        <ol class="list3">
+                          <li class="in">頭條</li>
+                          <li class="out">娛樂</li>  
+                        </ol>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h1>櫻花鉤吻鮭</h1>
+            <dl>
+                <dt style="background-color:yellow">學名</dt>
+                    <dd style="background-color:red">台灣鮭魚</dd>
+                <dt>分類</dt>
+                    <dd>鮭魚目,鮭科</dd>
+                <dt>特徵</dt>
+                    <dd>腹部為銀白色</dd>
+            </dl>
+            
+    </body>
+</html>
