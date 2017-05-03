@@ -8,7 +8,9 @@
                 width:500px;
                 height:300px;
                 border:3px solid red;
-                border-collapse:collapse;
+                border-collapse:collapse;  /*border-collapse:separate; //預設值，邊框彼此間分開
+                                             border-collapse:collapse; //邊框合併為單一邊框
+                                             border-collapse:inherit; //繼承自父層的 border-collapse 屬性值*/
             }
             td, th {
                 border:1px solid #F4A460;
@@ -28,7 +30,7 @@
             tbody tr:nth-child(2n) {
                 background-color:#EE82EE;
                 }
-            tbody tr:hover {
+            tbody tr:hover {                /*指到的地方會變色*/
                 background-color:#FFB6C1;
                 }
 
