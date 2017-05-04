@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>04for.html</title>
+    <style>
+        .t1{
+            border: red 2px solid;
+        }
+        /*td {
+          border: red 2px solid;  
+        }*/
+
+    </style>
+ 
+    <script>
+      
+        for (var i = 1; i < 10; i++) {
+            for (var j = 2; j < 10; j++) {
+                if (i * j < 10) 
+                    document.write(+j + "x" + i + "=" + "&nbsp" + i * j + "&nbsp" + "&nbsp");
+                else   
+                    document.write(j + "x" + i + "=" + i * j + "&nbsp" );
+
+            }
+            document.write("<br>");
+        }
+      
+	</script>
+
+</head>
+<body>
+
+</body>
+</html>
